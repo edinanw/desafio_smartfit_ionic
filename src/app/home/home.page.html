@@ -1,20 +1,99 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header >
+  <ion-toolbar color="dark">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-img src="../../assets/images/logo.svg" class="logo-header" />
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <div class="mensagem">
+        <h1 class="titulo"> REABERTURA <br>SMART FIT </h1>
+        <hr class="linha-titulo">        
+        <br>
+        <p>
+            O horário de funcionamento das nossas unidades está seguindo os decretos de cada município. Por isso,
+            confira aqui se a sua unidade está aberta e as medidas de segurança que estamos seguindo.
+        </p>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-list [formGroup]="form" class="formulario">
+        <span><i class="icon-horario"></i> Horário</span>
+        <p class="quest">Qual período quer treinar?</p>
+        
+        <ion-radio-group [allowEmptySelection]="true" formControlName="opcao">
+          <ion-radio value="manha" label-placement="end" >Manhã</ion-radio>
+          <span class="opcao">06:00 às 12:00</span>
+          <hr />
+          <ion-radio value="tarde" label-placement="end" >Tarde</ion-radio>
+          <span class="opcao">12:01 às 18:00</span>
+          <hr />
+          <ion-radio value="noite" label-placement="end" >Noite</ion-radio>
+          <span class="opcao">18:01 às 23:00</span>
+        </ion-radio-group>
+       
+        <hr>
+        <br>
+        <div class="linha-res">
+          <ion-checkbox formControlName="fechadas" labelPlacement="end">Exibir unidades fechadas</ion-checkbox>        
+          <span>Resultados encontrados: <span class="qtd-resultado">{{qtdResultados}}</span></span>
+        </div>
+        <div class="botoes">
+            <button class="btn btn-yellow" (click)="filtrar()">Encontrar unidade</button>
+            <button class="btn" (click)="form.reset()">Limpar</button>
+        </div>
+    </ion-list>
+
+    <ion-list class="legend">
+      <ion-item lines="none" *ngFor="let leg of legend" class="legend-block">
+        <ion-grid lines="none">
+          <ion-row>
+            <h4>{{leg.nome}}</h4>
+          </ion-row>
+          
+          <ion-row class="legend-block-img">                        
+            <div *ngFor="let legImg of leg.img" style="flex:1">
+              <img src="../../assets/images/{{legImg.url}}">
+              <span>{{legImg.desc}}</span>
+            </div>
+            
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>    
+
+    <ng-container *ngIf="show">
+        <div class="list" *ngIf="qtdResultados > 0 else nenhumRes">
+            <div class="card" *ngFor="let unidade of resultados">
+                <h4 [ngClass]="{'clr-green': unidade.opened, 'clr-red': !unidade.opened }">{{unidade.opened ? 'Aberta' : 'Fechada'}}</h4>
+                <h2>{{unidade.title}}</h2>
+                <span [innerHTML]="unidade.content"></span>
+                <ng-container *ngIf="unidade.opened">
+                    <hr />
+                    <br>
+                    <img src="../../assets/images/{{unidade.mask}}-mask.png">
+                    <img src="../../assets/images/{{unidade.towel}}-towel.png">
+                    <img src="../../assets/images/{{unidade.fountain}}-fountain.png">
+                    <img src="../../assets/images/{{unidade.locker_room}}-lockerroom.png">
+                    <br>
+                    
+                    <div class="horarios" *ngFor="let schedule of unidade.schedules">
+                        <h3>{{schedule.weekdays}}</h3>
+                        <span>{{schedule.hour}}</span>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <ng-template #nenhumRes>
+            Nenhuma unidade encontrada
+        </ng-template>
+    </ng-container>
+  </div>
+  <div class="footer">
+      <span>Todos os direitos reservados - 2020</span>
   </div>
 </ion-content>

@@ -1,27 +1,292 @@
-#container {
+@import '../../variables.scss';
+
+ion-content {
+  font-family: "gotham-light";
+}
+
+ion-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-header {
+  width: 60px;
+  height: 60px;
+}
+
+hr {
+  background-color: #ededed;
+  height: 2px;
+}
+
+.clr-green {
+  color: $green;
+}
+
+.clr-red {
+  color: $red;
+}
+
+.clr-yellow {
+  color: $yellow;
+}
+
+.clr-default {
+  color: $light-grey;
+}
+
+.legend {
+  padding-bottom: 30px;
+  width: 100%;
+  min-height: 200px;
+  background-color: #ededed;
+  margin: 40px 0px
+}
+
+.legend ion-item {
+  background-color: none;
+}
+
+.legend-block h4 {
+  width: 100%;
+  font-family: "gotham-bold";
+}
+
+.legend-block {
+  --background: none;
+  width: 100%;
+  height: 100%;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.legend-block h4 {
+  display: block;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+.legend-block-img {
+  display: flex;
+  flex-direction: row;
+}
 
-  color: #8c8c8c;
+.legend-block-img div {
+  flex: 1;
+}
 
+.legend-block span {
+  font-family: "gotham-book";
+  display: block;
+}
+
+.legend-block img {
+  width: 50px;
+  height: 50px;
+}
+
+.mensagem {
+  color: $dark-grey
+}
+
+.linha-titulo {
+  width: 75px;
+  height: 7px;
+  display: block;
+  background-color: #000;
+  float: left;
+}
+
+.footer span {
+  width: 100%;
+  display: inline-block;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.header,
+.footer,
+.legend {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+ion-list.formulario {
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  border: 3px solid #ededed;
+  border-radius: 10px;
+  min-height: 100px;
+  color: $light-grey;
+}
+
+.titulo {
+  font-family: "gotham-bold";
+}
+
+.icon-horario {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-image: url(../../assets/images/icon-hour.png);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.quest {
+  font-size: x-large;
+}
+
+ion-checkbox {
+  --size: 18px;
+  --checkbox-background-checked: #333333;
+  --checkmark-color: #FFB612;
+  --checkmark-width: 3px;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 3px;
+  border: 2px solid $dark-grey;
+}
+
+ion-radio::part(container) {
+  width: 18px;
+  height: 18px;
+  border-radius: 15px;
+  border: 2px solid $dark-grey;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: $dark-grey;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 5px;
+  height: 7px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: $yellow;
+
+  transform: rotate(45deg);
+}
+
+.linha-res {
+  color: #000;
+  font-family: "gotham-book";
+}
+
+span.opcao,
+.linha-res span:not(.qtd-resultado) {
+  float: right;
+  margin-top: 7px;
+}
+
+.qtd-resultado {
+  color: #000;
+  font-size: 1.5em;
+  font-family: "gotham-bold";
+}
+
+.botoes {
+  margin: 20px 0px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 15px 30px;
+  color: #000;
+  border: 2px solid #ccc;
+  margin: 5px;
+  min-width: 250px;
+  font-family: "gotham-bold";
+  text-transform: uppercase;
+  background-color: #fff;
+}
+
+.btn-yellow:hover {
+  border: 2px solid #a37407;
+  background-color: #a37407;
+}
+
+.btn-yellow {
+  border: 2px solid $yellow;
+  background-color: $yellow;
+}
+
+.card h2 {
+  font-family: "gotham-bold";
+}
+
+.card h4 {
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+.card {
+  flex: 0 0 calc(30% - 10px);
+  min-height: 100px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px #ccc;
+  margin: 10px;
+  display: inline-block;
+  padding: 10px;
+  background-color: #ededed;
+}
+
+.horarios {
+  width: 50%;
+  display: inline-block;
+}
+
+.card img {
+  display: inline-block;
+  width: 25%;
+}
+
+
+.container {
+  margin: 40px 5%;
+  min-height: 100vh;
+}
+
+.header {
+  height: 100px;
+  background-color: #000;
+  margin-bottom: 20px;
+  background-position: center;
+  background-size: 150px 70px;
+  background-image: url(../../assets/images/logo.svg);
+}
+
+.footer {
+  height: 200px;
+  background-color: #333;
+  color: white;
+  background-position: top 25px center;
+  background-size: 100px 70px;
+  background-image: url(../../assets/images/logo.svg);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
+
 }

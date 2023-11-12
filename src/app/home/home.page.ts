@@ -135,10 +135,10 @@ export class HomePage {
           return true
         }
 
-        this.show = true
         return false
       })
-      console.log(this.resultados)
+	  
+      this.show = true      
       this.qtdResultados = this.resultados.length
 
     })
